@@ -1,0 +1,14 @@
+﻿@model OnlineExamSystem.Web.Models.ViewModels.ExamViewModel
+@{
+    ViewData["Title"] = "Create Exam";
+}
+<h2>Create Exam</h2>
+<form asp-controller="Exam" asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Title">Exam Title</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-controller="Exam" asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

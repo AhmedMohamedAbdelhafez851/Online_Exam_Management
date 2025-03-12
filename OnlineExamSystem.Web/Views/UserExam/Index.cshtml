@@ -1,0 +1,68 @@
+﻿<!-- Views/UserExam/Index.cshtml -->
+@model IEnumerable<OnlineExamSystem.Domains.Entities.Exam>
+@{
+    ViewData["Title"] = "Available Exams";
+}
+
+<div class="card shadow">
+    <div class="card-header bg-primary text-white">
+        <h3 class="mb-0">Available Exams</h3>
+    </div>
+    <div class="card-body">
+        @if (Model.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Questions</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var exam in Model)
+                        {
+                            var submission = ViewBag.Submissions.ContainsKey(exam.ExamId) ? ViewBag.Submissions[exam.ExamId] : null;
+                            <tr>
+                                <td>@exam.Title</td>
+                                <td>@exam.Questions.Count</td>
+                                <td>
+                                    @if (submission != null)
+                                    {
+                                        <span class="badge @(submission.IsPassed ? "bg-success" : "bg-danger")">
+                                            @(submission.IsPassed ? "Passed" : "Failed") (@submission.Score%)
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">Not Taken</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (submission == null)
+                                    {
+                                        <a asp-action="TakeExam" asp-route-id="@exam.ExamId" class="btn btn-sm btn-primary">
+                                            Take Exam
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a asp-action="ViewResult" asp-route-id="@submission.SubmissionId" class="btn btn-sm btn-info">
+                                            View Result
+                                        </a>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <p class="text-muted">No exams available.</p>
+        }
+    </div>
+</div>

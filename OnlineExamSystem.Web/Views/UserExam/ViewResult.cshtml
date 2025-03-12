@@ -1,0 +1,144 @@
+﻿@model OnlineExamSystem.Domains.Entities.ExamSubmission
+@{
+    ViewData["Title"] = "Exam Result";
+}
+
+<!-- Add Bootstrap Icons CSS if not already in layout -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+<div class="container mt-4">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-@(Model.IsPassed ? "success" : "danger") text-white py-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="h4 mb-0">
+                    <i class="bi bi-file-earmark-medical me-2"></i>
+                    @Model.Exam.Title - Exam Result
+                </h2>
+                <span class="badge bg-white text-@(Model.IsPassed ? "success" : "danger") fs-6">
+                    @(Model.IsPassed ? "PASSED" : "FAILED")
+                    <i class="bi @(Model.IsPassed ? "bi-check-circle" : "bi-x-circle") ms-2"></i>
+                </span>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <!-- Summary Section -->
+            <div class="row g-4 mb-4">
+                <div class="col-md-3">
+                    <div class="bg-light p-3 rounded text-center">
+                        <div class="text-primary fs-4 fw-bold">@Model.Score.ToString("F2")%</div>
+                        <div class="text-muted small">Total Score</div>
+                        <div class="progress mt-2" style="height: 4px;">
+                            <div class="progress-bar bg-@(Model.IsPassed ? "success" : "danger")"
+                                 role="progressbar"
+                                 style="width: @Model.Score.ToString("F0")%"
+                                 aria-valuenow="@Model.Score"
+                                 aria-valuemin="0"
+                                 aria-valuemax="100">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="bg-light p-3 rounded text-center">
+                        <div class="text-success fs-4 fw-bold">@Model.CorrectAnswers</div>
+                        <div class="text-muted small">Correct Answers</div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="bg-light p-3 rounded text-center">
+                        <div class="text-danger fs-4 fw-bold">@(Model.TotalQuestions - Model.CorrectAnswers)</div>
+                        <div class="text-muted small">Incorrect Answers</div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="bg-light p-3 rounded text-center">
+                        <div class="fs-4 fw-bold">
+                            <i class="bi bi-calendar2-check text-secondary"></i>
+                        </div>
+                        <div class="text-muted small">
+                            @Model.SubmissionDate.ToString("yyyy-MM-dd HH:mm")
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Answers Breakdown -->
+            <h4 class="mb-3">
+                <i class="bi bi-list-task me-2 text-muted"></i>
+                Detailed Breakdown
+            </h4>
+
+            <div class="accordion" id="answersAccordion">
+                @{
+                    int questionCount = 0;
+                }
+                @foreach (var answer in Model.Answers)
+                {
+                    var isCorrect = answer.SelectedChoiceId == answer.Question.CorrectChoiceId;
+                    questionCount++;
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading@(questionCount)">
+                            <button class="accordion-button @(isCorrect ? "" : "collapsed")"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#collapse@(questionCount)"
+                                    aria-expanded="@(isCorrect ? "true" : "false")"
+                                    aria-controls="collapse@(questionCount)">
+                                <span class="badge bg-@(isCorrect ? "success" : "danger") me-2">
+                                    Q@(questionCount)
+                                </span>
+                                @answer.Question.Title
+                            </button>
+                        </h2>
+                        <div id="collapse@(questionCount)"
+                             class="accordion-collapse collapse @(isCorrect ? "show" : "")"
+                             aria-labelledby="heading@(questionCount)"
+                             data-bs-parent="#answersAccordion">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="alert @(isCorrect ? "alert-success" : "alert-danger")">
+                                            <h5 class="alert-heading">
+                                                <i class="bi @(isCorrect ? "bi-check-circle" : "bi-x-circle") me-2"></i>
+                                                Your Answer
+                                            </h5>
+                                            @answer.SelectedChoice.Text
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="alert alert-success">
+                                            <h5 class="alert-heading">
+                                                <i class="bi bi-check2-circle me-2"></i>
+                                                Correct Answer
+                                            </h5>
+                                            @answer.Question.Choices.First(c => c.ChoiceId == answer.Question.CorrectChoiceId).Text
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="d-flex justify-content-between mt-4">
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left me-2"></i>Back to Exams
+                </a>
+                <button class="btn btn-primary" onclick="window.print()">
+                    <i class="bi bi-printer me-2"></i>Print Result
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+}

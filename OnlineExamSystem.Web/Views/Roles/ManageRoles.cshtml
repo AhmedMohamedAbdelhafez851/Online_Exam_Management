@@ -1,0 +1,45 @@
+﻿@model OnlineExamSystem.Web.Models.UserDTO.ManageRolesViewModel
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4 class="mb-0">Manage Roles</h4>
+                </div>
+                <div class="card-body">
+                    <h5 class="text-center text-secondary">User ID: <span class="fw-bold">@Model.UserId</span></h5>
+
+                    @if (Model.Roles != null && Model.Roles.Any())
+                    {
+                        <form asp-action="ManageRoles" method="post">
+                            <div class="form-group">
+                                <label class="form-label fw-bold">Select Roles:</label>
+                                <div class="border rounded p-3">
+                                    @for (var i = 0; i < Model.Roles.Count; i++)
+                                    {
+                                        <div class="form-check mb-2">
+                                            <input type="checkbox" class="form-check-input" id="role_@i" name="Roles[@i].IsAssigned" value="true" @(Model.Roles[i].IsAssigned ? "checked" : "") />
+                                            <input type="hidden" name="Roles[@i].Name" value="@Model.Roles[i].Name" />
+                                            <label class="form-check-label" for="role_@i">@Model.Roles[i].Name</label>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <input type="hidden" name="UserId" value="@Model.UserId" />
+                            <div class="text-center mt-4">
+                                <button class="btn btn-success w-100 py-2" type="submit">
+                                    <i class="fas fa-save"></i> Save Changes
+                                </button>
+                            </div>
+                        </form>
+                    }
+                    else
+                    {
+                        <p class="text-center text-muted mt-3">No roles available.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

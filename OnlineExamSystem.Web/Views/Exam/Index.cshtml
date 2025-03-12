@@ -1,0 +1,332 @@
+﻿@model IEnumerable<OnlineExamSystem.Domains.Entities.Exam>
+@{
+    ViewData["Title"] = "Exam Management";
+}
+
+<div class="container-fluid mt-4">
+    <div class="card shadow border-0">
+        <div class="card-header bg-gradient d-flex justify-content-between align-items-center py-3">
+            <h3 class="mb-0 fw-bold text-primary">Exam Management</h3>
+            <button type="button"
+                    class="btn btn-primary btn-lg px-4 rounded-pill shadow-sm d-flex align-items-center gap-2"
+                    data-bs-toggle="modal"
+                    data-bs-target="#createExamModal">
+                <i class="bi bi-plus-circle fs-5"></i>
+                <span class="fw-semibold">Create Exam</span>
+            </button>
+        </div>
+        <div class="card-body p-4">
+            <div class="table-responsive">
+                <table id="examsTable" class="table table-striped table-hover align-middle" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Created Date</th>
+                            <th>Created By</th>
+                            <th>Questions</th>
+                            <th width="180">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            @foreach (var exam in Model)
+                            {
+                                <tr id="exam-row-@exam.ExamId">
+                                    <td>@exam.Title</td>
+                                    <td>@exam.CreatedDate.ToString("MMM dd, yyyy")</td>
+                                    <td>@exam.CreatedBy</td>
+                                    <td>
+                                        <span class="badge bg-info rounded-pill">@exam.Questions.Count</span>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <a asp-controller="Question" asp-action="Index" asp-route-examId="@exam.ExamId"
+                                               class="btn btn-sm btn-outline-primary">
+                                                <i class="bi bi-list-check"></i> Questions
+                                            </a>
+                                            <button type="button" class="btn btn-sm btn-outline-warning edit-exam-btn"
+                                                    data-id="@exam.ExamId" data-title="@exam.Title">
+                                                <i class="bi bi-pencil-fill"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-outline-danger delete-exam-btn"
+                                                    data-id="@exam.ExamId" data-title="@exam.Title">
+                                                <i class="bi bi-trash-fill"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Create Exam Modal -->
+<div class="modal fade" id="createExamModal" tabindex="-1" aria-labelledby="createExamModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="createExamModalLabel">
+                    <i class="bi bi-plus-circle me-2"></i>Create New Exam
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="createExamForm">
+                <div class="modal-body p-4">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="examTitle" name="Title" placeholder="Exam Title" required>
+                        <label for="examTitle">Exam Title</label>
+                        <div class="invalid-feedback">Please provide an exam title.</div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle me-1"></i>Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-save me-1"></i>Create Exam
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Exam Modal -->
+<div class="modal fade" id="editExamModal" tabindex="-1" aria-labelledby="editExamModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header bg-warning text-dark">
+                <h5 class="modal-title" id="editExamModalLabel">
+                    <i class="bi bi-pencil-square me-2"></i>Edit Exam
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="editExamForm">
+                <div class="modal-body p-4">
+                    <input type="hidden" id="editExamId" name="id">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="editExamTitle" name="Title" placeholder="Exam Title" required>
+                        <label for="editExamTitle">Exam Title</label>
+                        <div class="invalid-feedback">Please provide an exam title.</div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle me-1"></i>Cancel
+                    </button>
+                    <button type="submit" class="btn btn-warning">
+                        <i class="bi bi-save me-1"></i>Update Exam
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteExamModal" tabindex="-1" aria-labelledby="deleteExamModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="deleteExamModalLabel">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>Confirm Delete
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="text-center mb-3">
+                    <i class="bi bi-trash-fill text-danger" style="font-size: 3rem;"></i>
+                </div>
+                <p class="text-center fs-5">Are you sure you want to delete the exam "<span id="deleteExamTitle" class="fw-bold"></span>"?</p>
+                <div class="alert alert-warning">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                    <strong>Warning:</strong> This will also delete all questions associated with this exam and cannot be undone.
+                </div>
+            </div>
+            <div class="modal-footer bg-light">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    <i class="bi bi-x-circle me-1"></i>Cancel
+                </button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteExam">
+                    <i class="bi bi-trash-fill me-1"></i>Delete
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+
+@section Scripts {
+    <!-- DataTables CSS and JS -->
+    <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Initialize DataTable
+            var table = $('#examsTable').DataTable({
+                responsive: true,
+                language: {
+                    search: "<i class='bi bi-search'></i> _INPUT_",
+                    searchPlaceholder: "Search exams...",
+                    emptyTable: "<div class='text-center p-4'><i class='bi bi-journal-x text-muted' style='font-size: 3rem;'></i><p class='mt-3'>No exams found.<br>Click \"Create New Exam\" to add one.</p></div>",
+                    zeroRecords: "<div class='text-center p-4'><i class='bi bi-search text-muted' style='font-size: 3rem;'></i><p class='mt-3'>No matching exams found.<br>Try a different search term.</p></div>",
+                    info: "Showing _START_ to _END_ of _TOTAL_ exams",
+                    lengthMenu: "Show _MENU_ exams per page",
+                },
+                dom: '<"row mb-3"<"col-md-6"l><"col-md-6"f>>rt<"row"<"col-md-6"i><"col-md-6"p>>',
+                pagingType: "simple_numbers",
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            });
+
+            // Handle Create Form Submission
+            $("#createExamForm").submit(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url: '@Url.Action("Create", "Exam")',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function (response) {
+                        $('#createExamModal').modal('hide');
+                        $("#examTitle").val('');
+                        showToast('success', 'Exam created successfully', 'The new exam has been added to the system.');
+                        location.reload();
+                    },
+                    error: function (xhr) {
+                        showToast('error', 'Failed to create exam', xhr.responseText || 'An error occurred while creating the exam.');
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+
+            // Handle Edit Button Click
+            $(".edit-exam-btn").click(function () {
+                var examId = $(this).data("id");
+                var examTitle = $(this).data("title");
+                $("#editExamId").val(examId);
+                $("#editExamTitle").val(examTitle);
+                $("#editExamModal").modal("show");
+            });
+
+            // Handle Edit Form Submission
+            $("#editExamForm").submit(function (e) {
+                e.preventDefault();
+                var examId = $("#editExamId").val();
+                $.ajax({
+                    url: '@Url.Action("Edit", "Exam")/' + examId,
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function (response) {
+                        $('#editExamModal').modal('hide');
+                        showToast('success', 'Exam updated successfully', 'The exam details have been updated.');
+                        location.reload();
+                    },
+                    error: function (xhr) {
+                        showToast('error', 'Failed to update exam', xhr.responseText || 'An error occurred while updating the exam.');
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+
+            // Handle Delete Button Click
+            $(".delete-exam-btn").click(function () {
+                var examId = $(this).data("id");
+                var examTitle = $(this).data("title");
+                $("#deleteExamTitle").text(examTitle);
+                $("#confirmDeleteExam").data("id", examId);
+                $("#deleteExamModal").modal("show");
+            });
+
+            // Handle Delete Confirmation
+            $("#confirmDeleteExam").click(function () {
+                var examId = $(this).data("id");
+                var examTitle = $("#deleteExamTitle").text();
+
+                // Add loading state to button
+                var $btn = $(this);
+                $btn.prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Deleting...');
+
+                $.ajax({
+                    url: '@Url.Action("Delete", "Exam")/' + examId,
+                    type: 'POST',
+                    success: function (response) {
+                        $('#deleteExamModal').modal('hide');
+
+                        // Remove the row with animation
+                        $("#exam-row-" + examId).fadeOut(400, function() {
+                            table.row($(this)).remove().draw();
+                            showToast('success', 'Exam deleted successfully', 'The exam "' + examTitle + '" has been permanently deleted.');
+                        });
+
+                        // Reset button state
+                        $btn.prop('disabled', false).html('<i class="bi bi-trash-fill me-1"></i>Delete');
+                    },
+                    error: function (xhr) {
+                        // Reset button state
+                        $btn.prop('disabled', false).html('<i class="bi bi-trash-fill me-1"></i>Delete');
+
+                        $('#deleteExamModal').modal('hide');
+                        showToast('error', 'Failed to delete exam', xhr.responseText || 'An error occurred while deleting the exam.');
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+
+            // Professional Toast Notification
+            function showToast(type, title, message) {
+                const icons = {
+                    success: 'bi-check-circle-fill',
+                    error: 'bi-exclamation-circle-fill',
+                    warning: 'bi-exclamation-triangle-fill',
+                    info: 'bi-info-circle-fill'
+                };
+
+                const colors = {
+                    success: 'bg-success',
+                    error: 'bg-danger',
+                    warning: 'bg-warning',
+                    info: 'bg-info'
+                };
+
+                const toastId = 'toast-' + new Date().getTime();
+                const toastHtml = `
+                    <div id="${toastId}" class="toast border-0 shadow-sm" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="5000">
+                        <div class="toast-header ${colors[type]} text-white">
+                            <i class="bi ${icons[type]} me-2"></i>
+                            <strong class="me-auto">${title}</strong>
+                            <small>Just now</small>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                            ${message}
+                        </div>
+                    </div>
+                `;
+
+                $('.toast-container').append(toastHtml);
+                const toastElement = document.getElementById(toastId);
+                const toast = new bootstrap.Toast(toastElement);
+
+                // Remove old toasts if there are more than 3
+                if ($('.toast-container .toast').length > 3) {
+                    $('.toast-container .toast').first().remove();
+                }
+
+                toast.show();
+
+                // Remove toast after it's hidden
+                $(toastElement).on('hidden.bs.toast', function () {
+                    $(this).remove();
+                });
+            }
+        });
+    </script>
+}

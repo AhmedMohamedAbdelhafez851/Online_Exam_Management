@@ -1,0 +1,125 @@
+﻿@model OnlineExamSystem.Web.Models.ViewModels.QuestionViewModel
+@{
+    ViewData["Title"] = "Add Question";
+}
+
+<div class="container py-4">
+    <div class="card shadow-sm border-0 rounded-3">
+        <div class="card-header bg-primary bg-gradient text-white py-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h3 class="mb-0 fw-semibold"><i class="bi bi-question-circle me-2"></i>Add New Question</h3>
+                    <p class="mb-0 opacity-75 small">Exam: @Model.ExamTitle</p>
+                </div>
+                <a asp-controller="Question" asp-action="Index" asp-route-examId="@Model.ExamId"
+                   class="btn btn-outline-light btn-sm px-3">
+                    <i class="bi bi-arrow-left me-2"></i>Back to Questions
+                </a>
+            </div>
+        </div>
+
+        <div class="card-body p-4">
+            <form asp-action="Add" method="post" class="needs-validation">
+                <input type="hidden" asp-for="ExamId" />
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>Please correct the errors below
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+                <!-- Question Text Section -->
+                <div class="mb-4">
+                    <label asp-for="Title" class="form-label fw-semibold">
+                        <i class="bi bi-pencil-square me-1"></i>Question Text
+                    </label>
+                    <textarea asp-for="Title" class="form-control form-control-lg"
+                              rows="3" placeholder="Enter your question text here..." required></textarea>
+                    <span asp-validation-for="Title" class="text-danger small"></span>
+                    <div class="form-text text-muted small">
+                        <i class="bi bi-info-circle me-1"></i>Write a clear, concise question. This is what students will see.
+                    </div>
+                </div>
+
+                <!-- Answer Choices Section -->
+                <div class="card mb-4 border-0 shadow-sm">
+                    <div class="card-header bg-light py-3">
+                        <h5 class="mb-0 fw-semibold">
+                            <i class="bi bi-list-check me-2"></i>Answer Choices
+                        </h5>
+                        <p class="text-muted mb-0 small">Provide 4 options and select one correct answer</p>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="choices-container">
+                            @for (int i = 0; i < Model.Choices.Count; i++)
+                            {
+                                <div class="mb-3 p-3 border rounded-3 choice-container @(Model.CorrectChoiceIndex == i ? "border-success bg-success bg-opacity-10" : "")">
+                                    <div class="row g-3 align-items-center">
+                                        <div class="col-auto">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="CorrectChoiceIndex" value="@i"
+                                                       id="choice@(i)" @(Model.CorrectChoiceIndex == i ? "checked" : "") required>
+                                                <label class="form-check-label fw-semibold" for="choice@(i)">
+                                                    Option @(i + 1)
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-white text-muted">
+                                                    <i class="bi bi-@(Model.CorrectChoiceIndex == i ? "check-circle-fill text-success" : "circle")"></i>
+                                                </span>
+                                                <input asp-for="Choices[i].Text" class="form-control"
+                                                       placeholder="Enter answer option text" required />
+                                            </div>
+                                            <span asp-validation-for="Choices[i].Text" class="text-danger small"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons Section -->
+                <div class="d-flex justify-content-between align-items-center pt-2">
+                    <div class="form-text text-muted">
+                        <i class="bi bi-asterisk text-danger small me-1"></i>All fields are required
+                    </div>
+                    <div class="d-flex gap-2">
+                        <a asp-controller="Question" asp-action="Index" asp-route-examId="@Model.ExamId"
+                           class="btn btn-outline-secondary px-4">
+                            <i class="bi bi-x-lg me-2"></i>Cancel
+                        </a>
+                        <button type="submit" class="btn btn-primary px-4">
+                            <i class="bi bi-plus-circle me-2"></i>Create Question
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function() {
+            // Highlight selected answer choice
+            $('input[name="CorrectChoiceIndex"]').change(function() {
+                $('.choice-container').removeClass('border-success bg-success bg-opacity-10');
+                $(this).closest('.choice-container').addClass('border-success bg-success bg-opacity-10');
+
+                // Update the icons
+                $('.input-group-text i').removeClass('check-circle-fill text-success').addClass('circle');
+                $(this).closest('.choice-container').find('.input-group-text i')
+                    .removeClass('circle')
+                    .addClass('check-circle-fill text-success');
+            });
+
+            // Initialize tooltips
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
+}

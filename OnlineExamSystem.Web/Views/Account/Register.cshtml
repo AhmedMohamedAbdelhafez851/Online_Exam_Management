@@ -1,0 +1,48 @@
+﻿@model OnlineExamSystem.Web.Models.UserDTO.CreateUserViewModel
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<<h2 style="margin-left: 8cm ; font-size:medium">Register</h2>
+
+<form style="margin-left: 8cm ;width:1000px" asp-action="Register" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="FullName"></label>
+        <input asp-for="FullName" class="form-control" />
+        <span asp-validation-for="FullName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" class="form-control" type="password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ConfirmPassword"></label>
+        <input asp-for="ConfirmPassword" class="form-control" type="password" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+    <!-- Camera and Image Capture -->
+    <div class="form-group">
+        <label for="capturedImage">Capture Your Image:</label>
+        <div>
+            <video id="camera" autoplay style="width: 300px; height: 200px; border: 1px solid #ddd;"></video>
+        </div>
+        <div>
+            <button type="button" id="captureButton" class="btn btn-primary mt-2">Capture</button>
+        </div>
+        <div>
+            <canvas id="canvas" style="display: none;"></canvas>
+            <img id="capturedImagePreview" style="width: 150px; height: auto; display: none; border: 1px solid #ddd;" />
+        </div>
+        <input type="hidden" id="capturedImageData" name="CapturedImageData" />
+    </div>
+    <button type="submit" class="btn btn-success">Register</button>
+</form>
+

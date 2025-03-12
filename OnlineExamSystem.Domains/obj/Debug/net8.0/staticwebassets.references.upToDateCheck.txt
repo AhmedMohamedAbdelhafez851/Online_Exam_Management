@@ -1,0 +1,2 @@
+C:\Users\cm\source\repos\OnlineExamSystemSolution\OnlineExamSystem.BL\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\cm\source\repos\OnlineExamSystemSolution\OnlineExamSystem.BL\obj\Debug\net8.0\staticwebassets.build.json

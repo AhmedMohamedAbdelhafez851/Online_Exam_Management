@@ -1,0 +1,29 @@
+﻿@model OnlineExamSystem.Web.Models.UserDTO.RoleDto
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center mb-4">Edit Role</h2>
+
+            <form asp-action="EditRole" method="post" class="card p-4 shadow-sm">
+                <!-- Hidden field for Id -->
+                <input asp-for="Id" type="hidden" />
+
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label fw-bold">Role Name</label>
+                    <input asp-for="Name" class="form-control" placeholder="Enter role name" required />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="submit" class="btn btn-primary me-md-2">Update Role</button>
+                    <a asp-action="CreateRole" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

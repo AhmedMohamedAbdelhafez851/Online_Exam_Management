@@ -1,0 +1,85 @@
+﻿@model OnlineExamSystem.Web.Models.ViewModels.QuestionViewModel
+@{
+    ViewData["Title"] = "Edit Question";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <div>
+                <h3 class="mb-0">Edit Question</h3>
+                <small class="text-white-50">Exam: @Model.ExamTitle</small>
+            </div>
+            <a asp-controller="Question" asp-action="Index" asp-route-examId="@Model.ExamId" class="btn btn-outline-light">
+                <i class="bi bi-arrow-left"></i> Back to Questions
+            </a>
+        </div>
+        <div class="card-body">
+            <form asp-action="Edit" method="post">
+                <input type="hidden" asp-for="QuestionId" />
+                <input type="hidden" asp-for="ExamId" />
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                <div class="mb-4">
+                    <label asp-for="Title" class="form-label fw-bold">Question Text</label>
+                    <textarea asp-for="Title" class="form-control" rows="3" placeholder="Enter your question text here..." required></textarea>
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                    <div class="form-text">Write a clear, concise question. This is what students will see.</div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0">Answer Choices</h5>
+                        <small class="text-muted">Provide 4 options and select one correct answer</small>
+                    </div>
+                    <div class="card-body">
+                        @for (int i = 0; i < Model.Choices.Count; i++)
+                        {
+                            <div class="mb-3 p-3 border rounded @(Model.CorrectChoiceIndex == i ? "border-success bg-success bg-opacity-10" : "")">
+                                <div class="row align-items-center">
+                                    <div class="col-auto">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="CorrectChoiceIndex" value="@i"
+                                                   id="choice@(i)" @(Model.CorrectChoiceIndex == i ? "checked" : "") required>
+                                            <label class="form-check-label" for="choice@(i)">
+                                                Option @(i + 1) is correct
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-0">
+                                            <input type="hidden" asp-for="Choices[i].ChoiceId" />
+                                            <input asp-for="Choices[i].Text" class="form-control" placeholder="Enter choice text" required />
+                                            <span asp-validation-for="Choices[i].Text" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end gap-2">
+                    <a asp-controller="Question" asp-action="Index" asp-route-examId="@Model.ExamId" class="btn btn-secondary">
+                        Cancel
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-save"></i> Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function() {
+            $('input[name="CorrectChoiceIndex"]').change(function() {
+                $('.border').removeClass('border-success bg-success bg-opacity-10');
+                $(this).closest('.border').addClass('border-success bg-success bg-opacity-10');
+            });
+        });
+    </script>
+}
