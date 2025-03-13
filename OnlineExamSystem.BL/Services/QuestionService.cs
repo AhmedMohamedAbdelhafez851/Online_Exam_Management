@@ -163,7 +163,7 @@ namespace OnlineExamSystem.BL.Services
             }
         }
 
-        public async Task<bool> DeleteQuestionAsync(int questionId)
+              public async Task<bool> DeleteQuestionAsync(int questionId)
         {
             using var transaction = await _unitOfWork.BeginTransactionAsync();
             try
@@ -181,12 +181,24 @@ namespace OnlineExamSystem.BL.Services
                     return false;
                 }
 
-                // Clear the CorrectChoiceId to avoid the Restrict constraint
+                // Step 1: Delete all related UserAnswers
+                var userAnswers = await _unitOfWork.Repository<UserAnswer>()
+                    .GetListAsync(ua => ua.QuestionId == questionId);
+
+                foreach (var userAnswer in userAnswers)
+                {
+                    await _unitOfWork.Repository<UserAnswer>().DeleteAsync(userAnswer);
+                }
+                await _unitOfWork.SaveChangesAsync();
+                Console.WriteLine($"[DeleteQuestionAsync] Deleted {userAnswers.Count} related user answers.");
+
+                // Step 2: Clear CorrectChoiceId to avoid Restrict constraint
                 question.CorrectChoiceId = null;
                 await _unitOfWork.Repository<Question>().UpdateAsync(question);
                 await _unitOfWork.SaveChangesAsync();
                 Console.WriteLine($"[DeleteQuestionAsync] Cleared CorrectChoiceId for QuestionId={questionId}");
 
+                // Step 3: Remove the question from the Exam's Questions list
                 var exam = await _unitOfWork.Repository<Exam>()
                     .GetAllIncludingAsync(e => e.Questions)
                     .Result
@@ -200,12 +212,11 @@ namespace OnlineExamSystem.BL.Services
                         exam.Questions.Remove(questionToRemove);
                         await _unitOfWork.Repository<Exam>().UpdateAsync(exam);
                         await _unitOfWork.SaveChangesAsync();
-                        Console.WriteLine($"[DeleteQuestionAsync] Removed question {questionId} from Exam {exam.ExamId} (cascade delete triggered)");
+                        Console.WriteLine($"[DeleteQuestionAsync] Removed question {questionId} from Exam {exam.ExamId}");
                     }
                     else
                     {
-                        Console.WriteLine($"[DeleteQuestionAsync] Warning: Question {questionId} not found in Exam {exam.ExamId} Questions list.");
-                        // If the question isn't in the Exam's list, delete it explicitly
+                        // If not in the list, delete explicitly
                         await _unitOfWork.Repository<Question>().DeleteAsync(question);
                         await _unitOfWork.SaveChangesAsync();
                         Console.WriteLine($"[DeleteQuestionAsync] Explicitly deleted question {questionId}");
@@ -213,7 +224,7 @@ namespace OnlineExamSystem.BL.Services
                 }
                 else
                 {
-                    Console.WriteLine($"[DeleteQuestionAsync] Error: Exam with ID {question.ExamId} not found or has no Questions.");
+                    Console.WriteLine($"[DeleteQuestionAsync] Error: Exam with ID {question.ExamId} not found.");
                     return false;
                 }
 
@@ -228,5 +239,6 @@ namespace OnlineExamSystem.BL.Services
                 return false;
             }
         }
+
     }
 }
