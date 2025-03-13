@@ -14,5 +14,7 @@ namespace OnlineExamSystem.Domains.Entities
 
         public bool IsCorrect { get; set; }
         public virtual Question Question { get; set; } = new();
+        public virtual List<UserAnswer> UserAnswers { get; set; } = new(); 
+
     }
 }
