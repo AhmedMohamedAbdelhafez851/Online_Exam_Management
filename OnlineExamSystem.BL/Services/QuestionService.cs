@@ -93,13 +93,12 @@ namespace OnlineExamSystem.BL.Services
             }
         }
 
-        public async Task<(bool Success, Question? question)> EditQuestionAsync(Question question, List<Choice> choices)
+              public async Task<(bool Success, Question? question)> EditQuestionAsync(Question question, List<Choice> choices)
         {
             try
             {
                 Console.WriteLine($"[EditQuestionAsync] Starting: QuestionId={question.QuestionId}, Title={question.Title}");
 
-                // Fetch the existing question with its choices
                 var existingQuestion = await _unitOfWork.Repository<Question>()
                     .GetAllIncludingAsync(q => q.Choices)
                     .Result
@@ -111,29 +110,24 @@ namespace OnlineExamSystem.BL.Services
                     return (false, null);
                 }
 
-                // Update the question title
                 existingQuestion.Title = question.Title;
 
-                // Update choices: Match existing choices by ChoiceId, update or add new ones, and remove obsolete ones
                 var existingChoices = existingQuestion.Choices.ToList();
                 foreach (var existingChoice in existingChoices)
                 {
                     var updatedChoice = choices.FirstOrDefault(c => c.ChoiceId == existingChoice.ChoiceId);
                     if (updatedChoice != null)
                     {
-                        // Update existing choice
                         existingChoice.Text = updatedChoice.Text;
                         existingChoice.IsCorrect = updatedChoice.IsCorrect;
                         await _unitOfWork.Repository<Choice>().UpdateAsync(existingChoice);
                     }
                     else
                     {
-                        // Delete choice if it's not in the updated list
                         await _unitOfWork.Repository<Choice>().DeleteAsync(existingChoice);
                     }
                 }
 
-                // Add new choices (those with ChoiceId == 0)
                 foreach (var choice in choices.Where(c => c.ChoiceId == 0))
                 {
                     choice.QuestionId = question.QuestionId;
@@ -142,12 +136,13 @@ namespace OnlineExamSystem.BL.Services
 
                 await _unitOfWork.SaveChangesAsync();
 
-                // Update the correct choice
                 var correctChoice = choices.FirstOrDefault(c => c.IsCorrect);
                 if (correctChoice != null)
                 {
                     existingQuestion.CorrectChoiceId = correctChoice.ChoiceId;
-                    existingQuestion.CorrectChoice = correctChoice;
+                    // Get the tracked choice from existingQuestion.Choices
+                    var trackedCorrectChoice = existingQuestion.Choices.FirstOrDefault(c => c.ChoiceId == correctChoice.ChoiceId);
+                    existingQuestion.CorrectChoice = trackedCorrectChoice!;
                 }
                 else
                 {
@@ -167,6 +162,7 @@ namespace OnlineExamSystem.BL.Services
                 return (false, null);
             }
         }
+
         public async Task<bool> DeleteQuestionAsync(int questionId)
         {
             using var transaction = await _unitOfWork.BeginTransactionAsync();
