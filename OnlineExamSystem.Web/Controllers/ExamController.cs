@@ -65,11 +65,20 @@ namespace OnlineExamSystem.Web.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Delete(int id)
-        {
-            await _examService.DeleteExamAsync(id);
-            return RedirectToAction("Index");
-        }
+      [HttpPost]
+public async Task<IActionResult> Delete(int id)
+{
+    try
+    {
+        await _examService.DeleteExamAsync(id);
+        return RedirectToAction("Index");
+    }
+    catch (Exception ex)
+    {
+        // Log the error (e.g., using ILogger)
+        TempData["ErrorMessage"] = "Failed to delete exam. It may have existing user data.";
+        return RedirectToAction("Index");
+    }
+}
     }
 }
