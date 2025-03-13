@@ -11,8 +11,8 @@ namespace OnlineExamSystem.BL.Services
 
         public ExamService(IUnitOfWork unitOfWork) => _unitOfWork = unitOfWork;
 
-        public async Task<IQueryable<Exam>> GetAllExamsAsync()
-            => await _unitOfWork.Repository<Exam>().GetAllIncludingAsync();
+       public async Task<IQueryable<Exam>> GetAllExamsAsync()
+    => await _unitOfWork.Repository<Exam>().GetAllIncludingAsync(e => e.Questions);
 
         public async Task<Exam> CreateExamAsync(Exam exam)
         {
