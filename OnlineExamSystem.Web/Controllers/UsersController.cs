@@ -1,7 +1,8 @@
-﻿
+
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using OnlineExamSystem.BL.UnitOfWork;
 using OnlineExamSystem.Domains.Entities;
 using OnlineExamSystem.Web.Models.UserDTO;
 using System.Collections.Generic;
@@ -15,11 +16,16 @@ namespace OnlineExamSystem.Web.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public UsersController(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+        public UsersController(
+     UserManager<ApplicationUser> userManager,
+     RoleManager<IdentityRole> roleManager,
+     IUnitOfWork unitOfWork) // Add this line
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _unitOfWork = unitOfWork; // Add this line
         }
 
 
@@ -186,33 +192,62 @@ namespace OnlineExamSystem.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            Console.WriteLine($"Deleting user with ID: {id}"); // Debugging log
-            var user = await _userManager.FindByIdAsync(id);
-            if (user == null)
+            using var transaction = await _unitOfWork.BeginTransactionAsync();
+            try
             {
-                return Json(new { success = false, message = "User not found." });
-            }
-
-            // Remove user from all roles before deletion
-            var roles = await _userManager.GetRolesAsync(user);
-            if (roles.Any())
-            {
-                var removeRolesResult = await _userManager.RemoveFromRolesAsync(user, roles);
-                if (!removeRolesResult.Succeeded)
+                var user = await _userManager.FindByIdAsync(id);
+                if (user == null)
                 {
-                    return Json(new { success = false, message = "Error removing roles.", errors = removeRolesResult.Errors.Select(e => e.Description).ToArray() });
+                    return Json(new { success = false, message = "User not found." });
                 }
-            }
 
-            var result = await _userManager.DeleteAsync(user);
-            if (result.Succeeded)
-            {
+                // 1. Delete UserAnswers and ExamSubmissions
+                var submissions = await _unitOfWork.Repository<ExamSubmission>()
+                    .GetAllIncludingAsync(s => s.Answers)
+                    .Result
+                    .Where(s => s.UserId == user.Id)
+                    .ToListAsync();
+
+                foreach (var submission in submissions)
+                {
+                    // Delete UserAnswers
+                    foreach (var answer in submission.Answers.ToList())
+                    {
+                        await _unitOfWork.Repository<UserAnswer>().DeleteAsync(answer);
+                    }
+                    // Delete ExamSubmission
+                    await _unitOfWork.Repository<ExamSubmission>().DeleteAsync(submission);
+                }
+
+                await _unitOfWork.SaveChangesAsync();
+
+                // 2. Remove user roles
+                var roles = await _userManager.GetRolesAsync(user);
+                if (roles.Any())
+                {
+                    await _userManager.RemoveFromRolesAsync(user, roles);
+                }
+
+                // 3. Delete the user
+                var result = await _userManager.DeleteAsync(user);
+                if (!result.Succeeded)
+                {
+                    throw new Exception("Failed to delete user: " + string.Join(", ", result.Errors.Select(e => e.Description)));
+                }
+
+                transaction.Commit();
+
                 return Json(new { success = true });
             }
-
-            // Return detailed errors if deletion fails
-            var errors = result.Errors.Select(e => e.Description).ToArray();
-            return Json(new { success = false, message = "Error occurred while deleting the user.", errors = errors });
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                return Json(new
+                {
+                    success = false,
+                    message = "Error deleting user. Details: " + ex.Message
+                });
+            }
         }
 
         // Other controller actions (e.g., Index, Create, Edit) remain unchanged
