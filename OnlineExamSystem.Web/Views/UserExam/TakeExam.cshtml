@@ -1,34 +1,38 @@
-﻿<!-- Views/UserExam/TakeExam.cshtml -->
+<!-- Views/UserExam/TakeExam.cshtml -->
 @model OnlineExamSystem.Domains.Entities.Exam
 @{
     ViewData["Title"] = "Take Exam - " + Model.Title;
 }
 
-<div class="card shadow">
-    <div class="card-header bg-primary text-white">
-        <h3 class="mb-0">@Model.Title</h3>
-    </div>
-    <div class="card-body">
-        <form id="examForm">
-            <input type="hidden" name="examId" value="@Model.ExamId" />
-            @foreach (var question in Model.Questions)
-            {
-                <div class="mb-4">
-                    <h5>@question.Title</h5>
-                    @foreach (var choice in question.Choices)
-                    {
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="answers[@question.QuestionId]"
-                                   value="@choice.ChoiceId" id="choice_@choice.ChoiceId" required>
-                            <label class="form-check-label" for="choice_@choice.ChoiceId">
-                                @choice.Text
-                            </label>
-                        </div>
-                    }
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">@Model.Title</h3>
+        </div>
+        <div class="card-body">
+            <form id="examForm">
+                <input type="hidden" name="examId" value="@Model.ExamId" />
+                @foreach (var question in Model.Questions)
+                {
+                    <div class="mb-4 p-3 border rounded">
+                        <h5 class="mb-3">@question.Title</h5>
+                        @foreach (var choice in question.Choices)
+                        {
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="answers[@question.QuestionId]"
+                                       value="@choice.ChoiceId" id="choice@choice.ChoiceId" required>
+                                <label class="form-check-label" for="choice@choice.ChoiceId">
+                                    @choice.Text
+                                </label>
+                            </div>
+                        }
+                    </div>
+                }
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg">Submit Exam</button>
                 </div>
-            }
-            <button type="submit" class="btn btn-primary">Submit Exam</button>
-        </form>
+            </form>
+        </div>
     </div>
 </div>
 
