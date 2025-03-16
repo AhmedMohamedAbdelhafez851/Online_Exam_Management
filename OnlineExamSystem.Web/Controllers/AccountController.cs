@@ -123,5 +123,11 @@ namespace OnlineExamSystem.Web.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
+         [HttpGet]
+ public IActionResult AccessDenied(string returnUrl = null!)
+ {
+     ViewData["ReturnUrl"] = returnUrl;
+     return View();
+ }
     }
 }
