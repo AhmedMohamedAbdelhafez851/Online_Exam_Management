@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LT+kbjzTbQw=",
+  "dgSpecHash": "crHcTNySmIE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\cm\\source\\repos\\OnlineExamSystemSolution\\OnlineExamSystem.Domains\\OnlineExamSystem.Domains.csproj",
+  "projectFilePath": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\OnlineExamSystem.Domains.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\cm\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\cm\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
