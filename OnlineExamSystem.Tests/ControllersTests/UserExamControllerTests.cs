@@ -48,33 +48,33 @@ namespace OnlineExamSystem.Tests.ControllersTests
         }
 
         [Fact]
-        public async Task Index_ReturnsViewWithExamsAndSubmissions()
-        {
-            // Arrange - Use real DbContext for async operations
-            await using var context = new ApplicationDbContext(_dbOptions);
-            await context.Exams.AddRangeAsync(
-                new Exam { ExamId = 1 },
-                new Exam { ExamId = 2 }
-            );
-            await context.SaveChangesAsync();
+ public async Task Index_ReturnsViewWithExamsAndSubmissions()
+ {
+     // Arrange - Use real DbContext for async operations
+     await using var context = new ApplicationDbContext(_dbOptions);
+     await context.Exams.AddRangeAsync(
+         new Exam { ExamId = 1 },
+         new Exam { ExamId = 2 }
+     );
+     await context.SaveChangesAsync();
 
-            var submissions = new List<ExamSubmission> { new ExamSubmission { ExamId = 1 } };
+     var submissions = new List<ExamSubmission> { new ExamSubmission { ExamId = 1 } };
 
-            _mockUserManager.Setup(m => m.GetUserId(It.IsAny<ClaimsPrincipal>()))
-                .Returns("test-user-id");
-            _mockExamService.Setup(s => s.GetAllExamsAsync())
-                .ReturnsAsync(context.Exams.AsQueryable());
-            _mockSubmissionService.Setup(s => s.GetUserSubmissionsAsync("test-user-id"))
-                .ReturnsAsync(submissions);
+     _mockUserManager.Setup(m => m.GetUserId(It.IsAny<ClaimsPrincipal>()))
+         .Returns("test-user-id");
+     _mockExamService.Setup(s => s.GetAllExamsAsync())
+         .ReturnsAsync(context.Exams.AsQueryable());
+     _mockSubmissionService.Setup(s => s.GetUserSubmissionsAsync("test-user-id"))
+         .ReturnsAsync(submissions);
 
-            // Act
-            var result = await _controller.Index();
+     // Act
+     var result = await _controller.Index();
 
-            // Assert
-            var viewResult = Assert.IsType<ViewResult>(result);
-            Assert.NotNull(viewResult.ViewData["Submissions"]);
-            Assert.Equal(2, ((List<Exam>)viewResult.Model!).Count);
-        }
+     // Assert
+     var viewResult = Assert.IsType<ViewResult>(result);
+     Assert.NotNull(viewResult.ViewData["Submissions"]);
+     Assert.Equal(2, ((List<Exam>)viewResult.Model!).Count);
+ }
 
         [Fact]
         public async Task TakeExam_ValidId_ReturnsView()
