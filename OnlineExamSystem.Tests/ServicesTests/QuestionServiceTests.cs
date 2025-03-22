@@ -8,7 +8,7 @@ using Xunit;
 
 namespace OnlineExamSystem.Tests.ServicesTests
 {
-    public class QuestionServiceTests
+    public class QuestionServiceTests : IDisposable
     {
         private readonly ApplicationDbContext _context;
         private readonly UnitOfWork _unitOfWork;
@@ -17,6 +17,8 @@ namespace OnlineExamSystem.Tests.ServicesTests
         public QuestionServiceTests()
         {
             _context = TestDbContext.Create();
+            _context.Database.EnsureDeleted(); // Reset the database before each test
+            _context.Database.EnsureCreated();
             _unitOfWork = new UnitOfWork(_context);
             _questionService = new QuestionService(_unitOfWork);
 
@@ -47,12 +49,12 @@ namespace OnlineExamSystem.Tests.ServicesTests
                 ExamId = 1
             };
             var choices = new List<Choice>
-    {
-        new Choice { Text = "3", IsCorrect = false },
-        new Choice { Text = "4", IsCorrect = true },
-        new Choice { Text = "5", IsCorrect = false },
-        new Choice { Text = "6", IsCorrect = false }
-    };
+            {
+                new Choice { Text = "3", IsCorrect = false },
+                new Choice { Text = "4", IsCorrect = true },
+                new Choice { Text = "5", IsCorrect = false },
+                new Choice { Text = "6", IsCorrect = false }
+            };
 
             // Act
             var (success, addedQuestion) = await _questionService.AddQuestionAsync(question, choices);
@@ -77,6 +79,7 @@ namespace OnlineExamSystem.Tests.ServicesTests
             Assert.Equal(correctChoice.ChoiceId, addedQuestion.CorrectChoiceId);
             Assert.Equal("4", correctChoice.Text); // Ensure the correct choice has the expected text
         }
+
         [Fact]
         public async Task AddQuestionAsync_ExamNotFound_ReturnsFalse()
         {
@@ -112,17 +115,17 @@ namespace OnlineExamSystem.Tests.ServicesTests
                 ExamId = 1
             };
             var choices = new List<Choice>
-    {
-        new Choice { Text = "3", IsCorrect = false },
-        new Choice { Text = "4", IsCorrect = true },
-        new Choice { Text = "5", IsCorrect = false },
-        new Choice { Text = "6", IsCorrect = false }
-    };
+            {
+                new Choice { Text = "3", IsCorrect = false },
+                new Choice { Text = "4", IsCorrect = true },
+                new Choice { Text = "5", IsCorrect = false },
+                new Choice { Text = "6", IsCorrect = false }
+            };
             var (addSuccess, addedQuestion) = await _questionService.AddQuestionAsync(question, choices);
             Assert.True(addSuccess);
 
             // Modify question
-            addedQuestion.Title = "What is 3+3?";
+            addedQuestion!.Title = "What is 3+3?";
             var updatedChoices = addedQuestion.Choices.Select((c, index) => new Choice
             {
                 ChoiceId = c.ChoiceId,
@@ -184,17 +187,17 @@ namespace OnlineExamSystem.Tests.ServicesTests
                 ExamId = 1
             };
             var choices = new List<Choice>
-    {
-        new Choice { Text = "3", IsCorrect = false },
-        new Choice { Text = "4", IsCorrect = true },
-        new Choice { Text = "5", IsCorrect = false },
-        new Choice { Text = "6", IsCorrect = false }
-    };
+            {
+                new Choice { Text = "3", IsCorrect = false },
+                new Choice { Text = "4", IsCorrect = true },
+                new Choice { Text = "5", IsCorrect = false },
+                new Choice { Text = "6", IsCorrect = false }
+            };
             var (addSuccess, addedQuestion) = await _questionService.AddQuestionAsync(question, choices);
             Assert.True(addSuccess);
 
             // Act
-            var success = await _questionService.DeleteQuestionAsync(addedQuestion.QuestionId);
+            var success = await _questionService.DeleteQuestionAsync(addedQuestion!.QuestionId);
 
             // Assert
             Assert.True(success);

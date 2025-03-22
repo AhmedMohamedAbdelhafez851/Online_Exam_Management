@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "emvaiptC8EMOvdjyfz6Y7ed9gZQZfLAUYbjDdxlY2sQ=",
+  "Hash": "Jyq83t7Osoz7QanGW8ny7D7k8YtDJJaSMc9pcZia9xc=",
   "Source": "OnlineExamSystem.BL",
   "BasePath": "_content/OnlineExamSystem.BL",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\OnlineExamSystem.Domains.csproj",
+      "Identity": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\OnlineExamSystem.Domains.csproj",
       "Version": 2,
       "Source": "OnlineExamSystem.Domains",
       "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
@@ -22,24 +22,24 @@
     {
       "Name": "OnlineExamSystem.BL\\wwwroot",
       "Source": "OnlineExamSystem.BL",
-      "ContentRoot": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\wwwroot\\",
       "BasePath": "_content/OnlineExamSystem.BL",
       "Pattern": "**"
     },
     {
       "Name": "OnlineExamSystem.Domains\\wwwroot",
       "Source": "OnlineExamSystem.Domains",
-      "ContentRoot": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\wwwroot\\",
       "BasePath": "_content/OnlineExamSystem.Domains",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\obj\\Debug\\net8.0\\scopedcss\\bundle\\OnlineExamSystem.BL.styles.css",
+      "Identity": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\obj\\Debug\\net8.0\\scopedcss\\bundle\\OnlineExamSystem.BL.styles.css",
       "SourceId": "OnlineExamSystem.BL",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/OnlineExamSystem.BL",
       "RelativePath": "OnlineExamSystem.BL#[.{fingerprint}]?.styles.css",
       "AssetKind": "All",
@@ -54,13 +54,13 @@
       "Integrity": "nMzBKOOBnya/oQ1SaC181wjDtIbF5Pz6Q9DY1Win6wk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\obj\\Debug\\net8.0\\scopedcss\\bundle\\OnlineExamSystem.BL.styles.css"
+      "OriginalItemSpec": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\obj\\Debug\\net8.0\\scopedcss\\bundle\\OnlineExamSystem.BL.styles.css"
     },
     {
-      "Identity": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\OnlineExamSystem.BL.bundle.scp.css",
+      "Identity": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\OnlineExamSystem.BL.bundle.scp.css",
       "SourceId": "OnlineExamSystem.BL",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/OnlineExamSystem.BL",
       "RelativePath": "OnlineExamSystem.BL#[.{fingerprint}]!.bundle.scp.css",
       "AssetKind": "All",
@@ -75,13 +75,13 @@
       "Integrity": "q4FFwcabPrrKoaEtir8QH7cS0rb7k8q3io8vjDJvvnw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\OnlineExamSystem.BL.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\OnlineExamSystem.BL.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\wwwroot\\background.png",
+      "Identity": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\wwwroot\\background.png",
       "SourceId": "OnlineExamSystem.BL",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\wwwroot\\",
       "BasePath": "_content/OnlineExamSystem.BL",
       "RelativePath": "background#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -99,10 +99,10 @@
       "OriginalItemSpec": "wwwroot\\background.png"
     },
     {
-      "Identity": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\wwwroot\\exampleJsInterop.js",
+      "Identity": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\wwwroot\\exampleJsInterop.js",
       "SourceId": "OnlineExamSystem.BL",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\wwwroot\\",
       "BasePath": "_content/OnlineExamSystem.BL",
       "RelativePath": "exampleJsInterop#[.{fingerprint}]?.js",
       "AssetKind": "All",
@@ -120,10 +120,10 @@
       "OriginalItemSpec": "wwwroot\\exampleJsInterop.js"
     },
     {
-      "Identity": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\OnlineExamSystem.Domains.bundle.scp.css",
+      "Identity": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\OnlineExamSystem.Domains.bundle.scp.css",
       "SourceId": "OnlineExamSystem.Domains",
       "SourceType": "Project",
-      "ContentRoot": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/OnlineExamSystem.Domains",
       "RelativePath": "OnlineExamSystem.Domains#[.{fingerprint}]!.bundle.scp.css",
       "AssetKind": "All",
@@ -138,13 +138,13 @@
       "Integrity": "tPcNnjoj2g07nafZ+wZzJzLMoeo4BlbzRshdTj2tmNY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\OnlineExamSystem.Domains.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\OnlineExamSystem.Domains.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\wwwroot\\background.png",
+      "Identity": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\wwwroot\\background.png",
       "SourceId": "OnlineExamSystem.Domains",
       "SourceType": "Project",
-      "ContentRoot": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\wwwroot\\",
       "BasePath": "_content/OnlineExamSystem.Domains",
       "RelativePath": "background#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -159,13 +159,13 @@
       "Integrity": "WeOKCkI7IdJHs2kCqsKgLfiWX4/sNPbaRUspOLefkCY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\wwwroot\\background.png"
+      "OriginalItemSpec": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\wwwroot\\background.png"
     },
     {
-      "Identity": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\wwwroot\\exampleJsInterop.js",
+      "Identity": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\wwwroot\\exampleJsInterop.js",
       "SourceId": "OnlineExamSystem.Domains",
       "SourceType": "Project",
-      "ContentRoot": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\wwwroot\\",
       "BasePath": "_content/OnlineExamSystem.Domains",
       "RelativePath": "exampleJsInterop#[.{fingerprint}]?.js",
       "AssetKind": "All",
@@ -180,13 +180,13 @@
       "Integrity": "FrrTtczTUEHjkhc/zWRPC7CmxeXI0JCZGc1+76qQ8B4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\wwwroot\\exampleJsInterop.js"
+      "OriginalItemSpec": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\wwwroot\\exampleJsInterop.js"
     }
   ],
   "Endpoints": [
     {
       "Route": "_content/OnlineExamSystem.Domains/background.png",
-      "AssetFile": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\wwwroot\\background.png",
+      "AssetFile": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\wwwroot\\background.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -211,7 +211,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 17:22:42 GMT"
+          "Value": "Sat, 22 Mar 2025 19:15:30 GMT"
         }
       ],
       "EndpointProperties": [
@@ -223,7 +223,7 @@
     },
     {
       "Route": "_content/OnlineExamSystem.Domains/background.x2rx4ajns0.png",
-      "AssetFile": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\wwwroot\\background.png",
+      "AssetFile": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\wwwroot\\background.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -248,7 +248,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 17:22:42 GMT"
+          "Value": "Sat, 22 Mar 2025 19:15:30 GMT"
         }
       ],
       "EndpointProperties": [
@@ -268,7 +268,7 @@
     },
     {
       "Route": "_content/OnlineExamSystem.Domains/exampleJsInterop.6pqz8bsss0.js",
-      "AssetFile": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\wwwroot\\exampleJsInterop.js",
+      "AssetFile": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\wwwroot\\exampleJsInterop.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -293,7 +293,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 17:22:42 GMT"
+          "Value": "Sat, 22 Mar 2025 19:15:30 GMT"
         }
       ],
       "EndpointProperties": [
@@ -313,7 +313,7 @@
     },
     {
       "Route": "_content/OnlineExamSystem.Domains/exampleJsInterop.js",
-      "AssetFile": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\wwwroot\\exampleJsInterop.js",
+      "AssetFile": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\wwwroot\\exampleJsInterop.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -338,7 +338,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 17:22:42 GMT"
+          "Value": "Sat, 22 Mar 2025 19:15:30 GMT"
         }
       ],
       "EndpointProperties": [
@@ -350,7 +350,7 @@
     },
     {
       "Route": "_content/OnlineExamSystem.Domains/OnlineExamSystem.Domains.bundle.scp.css",
-      "AssetFile": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\OnlineExamSystem.Domains.bundle.scp.css",
+      "AssetFile": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\OnlineExamSystem.Domains.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -375,7 +375,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 18:39:32 GMT"
+          "Value": "Sat, 22 Mar 2025 21:01:49 GMT"
         }
       ],
       "EndpointProperties": [
@@ -387,7 +387,7 @@
     },
     {
       "Route": "_content/OnlineExamSystem.Domains/OnlineExamSystem.Domains.cur7fc11vz.bundle.scp.css",
-      "AssetFile": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\OnlineExamSystem.Domains.bundle.scp.css",
+      "AssetFile": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\OnlineExamSystem.Domains.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -412,7 +412,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 18:39:32 GMT"
+          "Value": "Sat, 22 Mar 2025 21:01:49 GMT"
         }
       ],
       "EndpointProperties": [
@@ -432,7 +432,7 @@
     },
     {
       "Route": "background.png",
-      "AssetFile": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\wwwroot\\background.png",
+      "AssetFile": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\wwwroot\\background.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -453,7 +453,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 17:22:42 GMT"
+          "Value": "Sat, 22 Mar 2025 19:15:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -469,7 +469,7 @@
     },
     {
       "Route": "background.x2rx4ajns0.png",
-      "AssetFile": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\wwwroot\\background.png",
+      "AssetFile": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\wwwroot\\background.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -490,7 +490,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 17:22:42 GMT"
+          "Value": "Sat, 22 Mar 2025 19:15:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -514,7 +514,7 @@
     },
     {
       "Route": "exampleJsInterop.6pqz8bsss0.js",
-      "AssetFile": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\wwwroot\\exampleJsInterop.js",
+      "AssetFile": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\wwwroot\\exampleJsInterop.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -535,7 +535,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 17:22:42 GMT"
+          "Value": "Sat, 22 Mar 2025 19:15:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -559,7 +559,7 @@
     },
     {
       "Route": "exampleJsInterop.js",
-      "AssetFile": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\wwwroot\\exampleJsInterop.js",
+      "AssetFile": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\wwwroot\\exampleJsInterop.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -580,7 +580,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 17:22:42 GMT"
+          "Value": "Sat, 22 Mar 2025 19:15:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -596,7 +596,7 @@
     },
     {
       "Route": "OnlineExamSystem.BL.bundle.scp.css",
-      "AssetFile": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\OnlineExamSystem.BL.bundle.scp.css",
+      "AssetFile": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\OnlineExamSystem.BL.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -617,7 +617,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 18:39:34 GMT"
+          "Value": "Sat, 22 Mar 2025 21:01:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -633,7 +633,7 @@
     },
     {
       "Route": "OnlineExamSystem.BL.dai3r1msjf.bundle.scp.css",
-      "AssetFile": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\OnlineExamSystem.BL.bundle.scp.css",
+      "AssetFile": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\OnlineExamSystem.BL.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -654,7 +654,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 18:39:34 GMT"
+          "Value": "Sat, 22 Mar 2025 21:01:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -678,7 +678,7 @@
     },
     {
       "Route": "OnlineExamSystem.BL.kwla6kpah4.styles.css",
-      "AssetFile": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\obj\\Debug\\net8.0\\scopedcss\\bundle\\OnlineExamSystem.BL.styles.css",
+      "AssetFile": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\obj\\Debug\\net8.0\\scopedcss\\bundle\\OnlineExamSystem.BL.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -703,7 +703,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 18:39:34 GMT"
+          "Value": "Sat, 22 Mar 2025 21:01:50 GMT"
         },
         {
           "Name": "Link",
@@ -727,7 +727,7 @@
     },
     {
       "Route": "OnlineExamSystem.BL.styles.css",
-      "AssetFile": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\obj\\Debug\\net8.0\\scopedcss\\bundle\\OnlineExamSystem.BL.styles.css",
+      "AssetFile": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\obj\\Debug\\net8.0\\scopedcss\\bundle\\OnlineExamSystem.BL.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -752,7 +752,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 18:39:34 GMT"
+          "Value": "Sat, 22 Mar 2025 21:01:50 GMT"
         },
         {
           "Name": "Link",

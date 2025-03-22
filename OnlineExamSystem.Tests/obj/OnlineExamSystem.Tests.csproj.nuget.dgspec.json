@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Tests\\OnlineExamSystem.Tests.csproj": {}
+    "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Tests\\OnlineExamSystem.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\OnlineExamSystem.BL.csproj": {
+    "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\OnlineExamSystem.BL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\OnlineExamSystem.BL.csproj",
+        "projectUniqueName": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\OnlineExamSystem.BL.csproj",
         "projectName": "OnlineExamSystem.BL",
-        "projectPath": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\OnlineExamSystem.BL.csproj",
+        "projectPath": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\OnlineExamSystem.BL.csproj",
         "packagesPath": "C:\\Users\\cm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\obj\\",
+        "outputPath": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\OnlineExamSystem.Domains.csproj": {
-                "projectPath": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\OnlineExamSystem.Domains.csproj"
+              "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\OnlineExamSystem.Domains.csproj": {
+                "projectPath": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\OnlineExamSystem.Domains.csproj"
               }
             }
           }
@@ -83,14 +83,14 @@
         }
       }
     },
-    "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\OnlineExamSystem.Domains.csproj": {
+    "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\OnlineExamSystem.Domains.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\OnlineExamSystem.Domains.csproj",
+        "projectUniqueName": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\OnlineExamSystem.Domains.csproj",
         "projectName": "OnlineExamSystem.Domains",
-        "projectPath": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\OnlineExamSystem.Domains.csproj",
+        "projectPath": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\OnlineExamSystem.Domains.csproj",
         "packagesPath": "C:\\Users\\cm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\obj\\",
+        "outputPath": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -180,14 +180,14 @@
         }
       }
     },
-    "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Tests\\OnlineExamSystem.Tests.csproj": {
+    "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Tests\\OnlineExamSystem.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Tests\\OnlineExamSystem.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Tests\\OnlineExamSystem.Tests.csproj",
         "projectName": "OnlineExamSystem.Tests",
-        "projectPath": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Tests\\OnlineExamSystem.Tests.csproj",
+        "projectPath": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Tests\\OnlineExamSystem.Tests.csproj",
         "packagesPath": "C:\\Users\\cm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Tests\\obj\\",
+        "outputPath": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -208,14 +208,14 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\OnlineExamSystem.BL.csproj": {
-                "projectPath": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\OnlineExamSystem.BL.csproj"
+              "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\OnlineExamSystem.BL.csproj": {
+                "projectPath": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\OnlineExamSystem.BL.csproj"
               },
-              "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\OnlineExamSystem.Domains.csproj": {
-                "projectPath": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\OnlineExamSystem.Domains.csproj"
+              "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\OnlineExamSystem.Domains.csproj": {
+                "projectPath": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\OnlineExamSystem.Domains.csproj"
               },
-              "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Web\\OnlineExamSystem.Web.csproj": {
-                "projectPath": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Web\\OnlineExamSystem.Web.csproj"
+              "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Web\\OnlineExamSystem.Web.csproj": {
+                "projectPath": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Web\\OnlineExamSystem.Web.csproj"
               }
             }
           }
@@ -287,14 +287,14 @@
         }
       }
     },
-    "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Web\\OnlineExamSystem.Web.csproj": {
+    "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Web\\OnlineExamSystem.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Web\\OnlineExamSystem.Web.csproj",
+        "projectUniqueName": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Web\\OnlineExamSystem.Web.csproj",
         "projectName": "OnlineExamSystem.Web",
-        "projectPath": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Web\\OnlineExamSystem.Web.csproj",
+        "projectPath": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Web\\OnlineExamSystem.Web.csproj",
         "packagesPath": "C:\\Users\\cm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Web\\obj\\",
+        "outputPath": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Web\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -315,11 +315,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\OnlineExamSystem.BL.csproj": {
-                "projectPath": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.BL\\OnlineExamSystem.BL.csproj"
+              "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\OnlineExamSystem.BL.csproj": {
+                "projectPath": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.BL\\OnlineExamSystem.BL.csproj"
               },
-              "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\OnlineExamSystem.Domains.csproj": {
-                "projectPath": "C:\\Users\\cm\\source\\repos\\Online_Exam_Management\\OnlineExamSystem.Domains\\OnlineExamSystem.Domains.csproj"
+              "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\OnlineExamSystem.Domains.csproj": {
+                "projectPath": "C:\\Users\\cm\\Desktop\\FromGithub\\OnlineExamSystem.Domains\\OnlineExamSystem.Domains.csproj"
               }
             }
           }

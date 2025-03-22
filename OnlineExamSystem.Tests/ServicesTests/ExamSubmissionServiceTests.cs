@@ -17,7 +17,7 @@ namespace OnlineExamSystem.Tests.ServicesTests
         public ExamSubmissionServiceTests()
         {
             _context = TestDbContext.Create();
-            _context.Database.EnsureDeleted();
+            _context.Database.EnsureDeleted(); // Reset the database before each test
             _context.Database.EnsureCreated();
             _unitOfWork = new UnitOfWork(_context);
             _submissionService = new ExamSubmissionService(_unitOfWork);

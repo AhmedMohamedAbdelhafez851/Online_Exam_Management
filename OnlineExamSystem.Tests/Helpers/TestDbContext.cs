@@ -9,8 +9,8 @@ namespace OnlineExamSystem.Tests.Helpers
         public static ApplicationDbContext Create()
         {
             var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseInMemoryDatabase(databaseName: "TestDb")
-                .ConfigureWarnings(w => w.Ignore(InMemoryEventId.TransactionIgnoredWarning)) // Suppress transaction warning
+                .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString()) // Ensure unique database name
+                .ConfigureWarnings(w => w.Ignore(InMemoryEventId.TransactionIgnoredWarning))
                 .Options;
 
             return new ApplicationDbContext(options);

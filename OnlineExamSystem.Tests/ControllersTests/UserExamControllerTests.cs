@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Moq;
 using OnlineExamSystem.BL.Abstraction;
 using OnlineExamSystem.BL.Repositories;
@@ -14,7 +15,7 @@ using Xunit;
 
 namespace OnlineExamSystem.Tests.ControllersTests
 {
-    public class UserExamControllerTests
+    public class UserExamControllerTests : IDisposable
     {
         private readonly Mock<IExamService> _mockExamService = new();
         private readonly Mock<IExamSubmissionService> _mockSubmissionService = new();
@@ -27,7 +28,13 @@ namespace OnlineExamSystem.Tests.ControllersTests
         {
             _dbOptions = new DbContextOptionsBuilder<ApplicationDbContext>()
                 .UseInMemoryDatabase(databaseName: "TestDB")
+                .ConfigureWarnings(w => w.Ignore(InMemoryEventId.TransactionIgnoredWarning))
                 .Options;
+
+            // Reset the database before each test
+            using var context = new ApplicationDbContext(_dbOptions);
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
 
             var store = new Mock<IUserStore<ApplicationUser>>();
             _mockUserManager = new Mock<UserManager<ApplicationUser>>(
@@ -137,6 +144,12 @@ namespace OnlineExamSystem.Tests.ControllersTests
 
             Assert.True(success);
             Assert.Equal(1, submissionId);
+        }
+
+        public void Dispose()
+        {
+            using var context = new ApplicationDbContext(_dbOptions);
+            context.Database.EnsureDeleted();
         }
     }
 }

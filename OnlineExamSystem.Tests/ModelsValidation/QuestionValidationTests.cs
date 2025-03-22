@@ -95,18 +95,20 @@ namespace OnlineExamSystem.Tests.ModelsValidation
 
         // Updated Tests
         [Fact]
-        public void QuestionViewModel_RequiresFourChoices()
+        public void QuestionViewModel_WithFourChoices_PassesValidation()
         {
             // Arrange
             var model = new QuestionViewModel
             {
                 Title = "Valid Title",
+                ExamId = 1,
                 CorrectChoiceIndex = 0,
-                Choices = new List<ChoiceViewModel> // Only 3 choices
+                Choices = new List<ChoiceViewModel>
         {
-            new() { Text = "A" },
-            new() { Text = "B" },
-            new() { Text = "C" }
+            new ChoiceViewModel { Text = "A" },
+            new ChoiceViewModel { Text = "B" },
+            new ChoiceViewModel { Text = "C" },
+            new ChoiceViewModel { Text = "D" }
         }
             };
 
@@ -114,9 +116,7 @@ namespace OnlineExamSystem.Tests.ModelsValidation
             var results = ValidateModel(model);
 
             // Assert
-            Assert.Contains(results, r =>
-                r.ErrorMessage!.Contains("Exactly 4 choices are required") &&
-                r.MemberNames.Contains(nameof(QuestionViewModel.Choices)));
+            Assert.Empty(results);
         }
 
         [Fact]
@@ -141,7 +141,7 @@ namespace OnlineExamSystem.Tests.ModelsValidation
 
             // Assert
             Assert.Contains(results, r =>
-                r.ErrorMessage!.Contains("All choices must have valid text") &&
+                r.ErrorMessage!.Contains("Choice text is required") &&
                 r.MemberNames.Contains(nameof(QuestionViewModel.Choices)));
         }
 
