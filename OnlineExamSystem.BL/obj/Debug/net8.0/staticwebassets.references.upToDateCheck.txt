@@ -83,3 +83,4 @@ C:\Users\cm\source\repos\OnlineExamSystemSolution\OnlineExamSystem.Domains\obj\D
 C:\Users\cm\source\repos\OnlineExamSystemSolution\OnlineExamSystem.Domains\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\cm\source\repos\OnlineExamSystemSolution\OnlineExamSystem.Domains\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\cm\source\repos\OnlineExamSystemSolution\OnlineExamSystem.Domains\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\cm\source\repos\Online_Exam_Management\OnlineExamSystem.Domains\obj\Debug\net8.0\staticwebassets.build.json

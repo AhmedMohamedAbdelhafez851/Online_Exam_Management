@@ -1,0 +1,9 @@
+@import '_content/OnlineExamSystem.Domains/OnlineExamSystem.Domains.cur7fc11vz.bundle.scp.css';
+
+/* _content/OnlineExamSystem.BL/Component1.razor.rz.scp.css */
+.my-component[b-ljh45zve6g] {
+    border: 2px dashed red;
+    padding: 1em;
+    margin: 1em 0;
+    background-image: url('background.png');
+}
