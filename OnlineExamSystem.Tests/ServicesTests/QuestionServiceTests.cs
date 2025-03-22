@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using OnlineExamSystem.BL.Services;
 using OnlineExamSystem.BL.UnitOfWork;
 using OnlineExamSystem.Domains;
